@@ -1,58 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Akpro Portfolio</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #a18cd1, #fbc2eb);
-      margin: 0;
-      padding: 0;
-      color: #333;
-      text-align: center;
-    }
-    header {
-      background-color: rgba(255, 255, 255, 0.3);
-      padding: 20px;
-      font-size: 1.5em;
-      font-weight: bold;
-    }
-    section {
-      margin: 40px auto;
-      max-width: 600px;
-      background: #fff;
-      padding: 20px;
-      border-radius: 15px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-    a {
-      display: inline-block;
-      margin: 10px;
-      padding: 10px 15px;
-      background: #333;
-      color: #fff;
-      border-radius: 8px;
-      text-decoration: none;
-    }
-    a:hover {
-      background: #555;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AkProStudio | Portfolio</title>
+  <!-- এখানে style.css লিংক -->
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <header>👋 Welcome to Akpro’s Portfolio</header>
-  <section>
+
+<body class="fade-in">
+  <!-- হেডার শুরু -->
+  <header>
+    <h1 class="logo">AkProStudio</h1>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#projects">Projects</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+  <!-- হেডার শেষ -->
+
+  <!-- হিরো সেকশন শুরু -->
+  <section class="hero">
+    <!-- এখানে প্রোফাইল ছবি বসবে -->
+    <img src="profile.jpg" alt="Abul Kalam" class="profile-pic">
+
+    <h2>Hello, I'm Abul Kalam</h2>
+    <p>A passionate Web Developer who loves turning ideas into beautiful digital realities.</p>
+    <a href="#" class="hire-btn">Hire Me</a>
+  </section>
+  <!-- হিরো সেকশন শেষ -->
+
+  <!-- ওয়েলকাম সেকশন -->
+  <section class="welcome" id="projects">
+    <h2>Welcome to AkProStudio</h2>
+    <p>প্রফেশনাল ওয়েব ডিজাইন, কোডিং এবং ক্রিয়েটিভ আইডিয়ার এক জায়গায়।</p>
+    <a href="#" class="explore-btn">Explore More</a>
+  </section>
+
+  <!-- About সেকশন -->
+  <section class="about" id="about">
     <h2>About Me</h2>
-    <p>Hello! I’m Akpro, a passionate web developer creating modern and responsive websites.</p>
+    <p>আমি Abul Kalam — একজন ওয়েব ডেভেলপার ও ডিজাইনার।  
+       আমি ফ্রন্ট-এন্ড ডিজাইন, রেসপনসিভ ওয়েবসাইট, এবং ইউজার এক্সপেরিয়েন্স নিয়ে কাজ করতে ভালোবাসি।</p>
   </section>
-  <section>
-    <h2>Contact</h2>
-    <p>📧 Email: akpro@example.com</p>
-  </section>
+
+  <!-- Contact সেকশন -->
+  <section class="contact">
+  <h2>Contact Me</h2>
+  <form action="sendmail.php" method="POST">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <textarea name="message" placeholder="Your Message" required></textarea>
+    <button type="submit" class="send-btn">Send Message</button>
+  </form>
+</section><?php
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $message = $_POST['message'];
+
+    $to = "amazing.officialai@gmail.com"; // 📩 তোমার ইমেইল
+    $subject = "New Message from AkProStudio";
+    $body = "Name: $name\nEmail: $email\n\nMessage:\n$message";
+
+    $headers = "From: $email";
+
+    if(mail($to, $subject, $body, $headers)){
+        echo "<h2 style='text-align:center;color:green;'>✅ Message Sent Successfully!</h2>";
+    } else {
+        echo "<h2 style='text-align:center;color:red;'>❌ Message Sending Failed. Try Again.</h2>";
+    }
+}
+?>
+
+  <!-- ফুটার -->
   <footer>
-    <p>© 2025 Akpro | Built with ❤️</p>
+    © 2025 AkProStudio | Designed by Abul Kalam
   </footer>
 </body>
 </html>
